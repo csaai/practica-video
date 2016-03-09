@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script>
+        function playMyVideo() {
+            dur.innerHTML=myVideo.duration
+            if (myVideo.paused) {
+                myVideo.play();
+                playbot.textContent="pause";
+            } else {
+                myVideo.pause();
+                playbot.textContent="play";
+            }        }
+        function pauseMyVideo() {
+            myVideo.pause();
+        }
+        function muteMyVideo() {
+            if (myVideo.muted == true) {
+                myVideo.muted = false;
+                mutebot.textContent="mute";
+            } else {
+                myVideo.muted=true;
+                mutebot.textContent="unmute";
+            }
+        }
+        function volumeUp() {
+            myVideo.volume += 0.1;
+            vd.innerHTML=myVideo.volume;
+        }
+        function volumeDown() {
+            myVideo.volume -= 0.1;
+            vd.innerHTML=myVideo.volume;
+        }
+    </script>
 </head>
 <body>
     <video id="myVideo" style="border:solid" autoplay>
         <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
     </video>
     <p>
-    <button>play</button>
-    <button>pause</button>
-    <button>mute</button>
-    <button>+</button>
-    <span>0</span>
-    <button>-</button>
+    <button id="playbot" onclick="playMyVideo()" >play</button>
+    <button id="mutebot" onclick="pauseMyVideo()">pause</button>
+    <button onclick="muteMyVideo()">mute</button>
+    <button onclick="volumeUp()">+</button>
+    <span id="vd">0</span>
+    <button onclick="volumeDown()">-</button>
+    <span id="dur">0</span>
+
     
     <!--
         EJERCICIO 1: Conectar los botones anteriores al API JS del elemento "myVideo"
@@ -27,7 +60,13 @@
         pulsar
         
         EJERCICIO 3: Mostrar el valor numŽrico del volumen actual en el elemento span
-    
+        
+        EJERCICIO 4: Mostrar la duraci—n total del contenido
+        
+        EJERCICIO 5: Mostrar la posici—n actual de reproducci—n
+        
+        EJERCICIO 6: A–adir un formulario que acepte un campo numerico como nueva posici—n de reproducci—n
+        
     -->
 </body>
 </html>

@@ -46,8 +46,9 @@
                         vElement.src = newVideo.src;
                     }
                     vElement.style.opacity = op;
-                    vElement.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                    //vElement.style.filter = 'alpha(opacity=' + op * 100 + ")";
                     op -=  0.05;
+                    //op=op*0.5
                 }, 20);
             } else {
                 window.alert("Format not supported: " + newVideo.mime);
@@ -62,7 +63,7 @@
                     clearInterval(timer);
                 }
                 vElement.style.opacity = op;
-                vElement.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                //vElement.style.filter = 'alpha(opacity=' + op * 100 + ")";
                 op += 0.05;
             }, 20);
         }

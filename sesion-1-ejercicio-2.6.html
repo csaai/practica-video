@@ -37,16 +37,31 @@
         }
         
         function switchVideo(vElement , newVideo) {
-            if (vElement.canPlayType(newVideo.mime) != "") {
-                vElement.lastPosition = vElement.currentTime;
-                vElement.src = newVideo.src;
-            } else {
-                window.alert("Format not supported: " + newVideo.mime);
-            }
+                var op = 1;
+                var timer = setInterval(function () {
+                    if (op <= 0.05){
+                        clearInterval(timer);
+                        vElement.lastPosition = vElement.currentTime;
+                        vElement.src = newVideo.src;
+                    }
+                    vElement.style.opacity = op;
+                    //vElement.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                    op -=  0.05;
+                }, 20);
+
         }
         function playVideo (videoElement) {
             videoElement.currentTime = videoElement.lastPosition;
-            videoElement.play();    
+            videoElement.play();
+            var op = 0.05;
+            var timer = setInterval(function () {
+                if (op >= 1.0){
+                    clearInterval(timer);
+                }
+                videoElement.style.opacity = op;
+                //vElement.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op += 0.05;
+            }, 20);
         }
     </script>
 </head>

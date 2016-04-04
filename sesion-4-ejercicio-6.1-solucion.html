@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <script>
+        function togglePlayStatus() {
+          if (myVideo.paused) {
+            myVideo.play();
+          } else {
+            myVideo.pause();
+          }
+          togglePlayIcon();
+        }
+        function togglePlayIcon() {
+          if (myVideo.paused) {
+            playbut.innerHTML="<img src='sesion-4-ejercicio-6-play.png' width='20'>"
+          } else {
+            playbut.innerHTML="<img src='sesion-4-ejercicio-6-pause.png' width='20'>"
+          }
+        }
+      </script>
+    </head>
+    <body>
+        <video id="myVideo" style="width:800px"
+              onplay="togglePlayIcon()" onpause="togglePlayIcon()">
+          <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
+        </video>
+        <div id="playbut" onclick="togglePlayStatus()">
+          <img src="sesion-4-ejercicio-6-play.png" width="20">
+        </div>
+    </body>
+</html>

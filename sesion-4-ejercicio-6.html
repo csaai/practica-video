@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <video id="myVideo" style="width:800px">
+          <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
+        </video>
+
+        <!--
+        Los controles nativos del tag de video no permiten adaptar los estilos
+        a las aplicaciones en las que son usadas. Por ese motivo algunas aplicaciones
+        deciden implementar sus propios controles.
+
+        En el ejercicio se mostrara como construir una barra sencilla de controles
+        que permita la siguiente funcionalidad
+          * Play/Pause
+          * Seek
+          * Barra de progreso
+          * Duracion total del contenido
+
+
+        EJERCICIO 1: Implemente un boton play/pause que este sincronizado con
+        el estado de reproduccion del elemento myVideo y que al mismo permita
+        cambiarlo. El boton debe commutar las imagenes, de tal forma que cuando
+        se pulsa se muestra la imagen asociada a la accion a ejecutar en la
+        siguiente pulsacion.
+
+        EJERCICIO 2: Añada al documento una seccion en la que se muestre la
+        duracion total del contenido despues de haberse completado la incializacion
+        del elemento myVideo. Use un separador de bloque de tipo div.
+
+        EJERCICIO 3: Añada una barra de progreso que se actualice en funcion del
+        momento de reproduccion; vacia en el momento 0 y llena al completar. Use
+        el elemento progress para este fin. Recuerde ajustar tanto value como max
+
+        EJERCICIO 4: Implemente un meanismo que permita realizar la operacion
+        seek a traves de pulsaciones de raton sobre la barra de progreso. Utilice
+        el valor offsetX para del evento de pulsacion para detectar la posicion
+        del cursor.
+
+        EJERCICIO 5: Implemente un layout de todos los elementos anteriores para
+        que aparezcan en la misma linea con la siguiente disposicion: play/pause,
+        progreso y duracion, de forma similar a como se muestra en los controles
+        nativos 
+
+        -->
+    </body>
+</html>

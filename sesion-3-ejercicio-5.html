@@ -11,22 +11,71 @@
         <!--
         CUE: a thing said or done that serves as a signal to an actor or
         other performer to enter or to begin their speech or performance
-        
+
         En el contexto de video son marcas que permiten realizar acciones,
         como el cambio de un subtitulo
-        
+
         EJERCICIO 1: Establecer un mecanismo basado en javascript que
         permita motirizar la posicion de reproduccion de un elemento video.
         Imprimir el valor de la propiedad currentTime dentro del elemento subtitle
-        
+
         EJERCICIO 2: Implementar un mecanismo de disparo de eventos
         asociado a marcas de tiempo (CUE) del video reproducido. Imprimir
         el valor de la marca cuando la reproduccion sobrepase dicho punto
-        
+
         EJERCICIO 3: Reemplazar el valor de la marca por un texto (subtitulo)
-        
+
         EJERICIO 4: Ajustar los estilos para integrar el parrafo dentro del
         componente de video
+
+        El tag video proporciona un mecanismo estandar para añadir subtitulos
+        basado en el element <track>
+
+            https://developer.mozilla.org/en-US/Apps/Fundamentals/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video
+            https://developer.mozilla.org/en/docs/Web/HTML/Element/track
+            http://www.html5rocks.com/en/tutorials/track/basics/
+
+        <video>
+          <track src="url">
+        </video>
+
+        * El atributo src contiene la URL del archivo de subtitulos, que debe
+          estar codificado en formato WebVTT
+
+              https://developer.mozilla.org/en-US/docs/Web/API/Web_Video_Text_Tracks_Format
+
+        EJERCICIO 5: Crear un fichero con formato vtt que muestre los mismos subtitulos
+        del ejercicio 4
+
+        * El elemento <track> puede aparecer multiples veces para permitir
+          soporte multi-idoma o proporcionar distintos tipos de informacion
+
+        EJERCICIO 6: Crear un fichero de subtitulos en ingles y añadirlo al video.
+          - ¿Se ofrece de forma nativa la opcion de seleccionar entre los tracks disponibles?
+          - Mostrar informacion para cada uno de los tracks. incluyendo tipo y label e idioma
+          - Implemente un mecanismo que permita seleccionar entre los tracks de subtitulos disponibles
+
+        EJERCICIO 7: Crear un fichero con formato vtt que proporcione una descripcion
+        de la escena y asociarlo a un track del video
+
+        * La especificacion WebVTT permite asociar estilos a los subtitulos. Para
+          ello se usa el pseudoelement ::cue
+
+        EJERCICIO 8: Modificar los estilos de los subtitulos para que aparezcan
+        en italiza azul
+
+        EJERCICIO 9: Modificar los estilos de los subtitulos asignando un color
+        especifico a cada personaje
+
+        * El formato WebVTT permite realizar un ajuste fino de la presentacion
+          de cue a traves del tag timestamp. Esto es de utilidad cuando se
+          quiere dar mas enfasis a los subtitulos o en aplicaciones de tipo
+          karaoke, en las que es importante la sincronizacion del audio y del
+          texto
+
+        EJERCICIO 10: Modificar los subitulos para que las frases se sincronicen
+        al maximo con el sonido. 
+
         -->
     </body>
 </html>

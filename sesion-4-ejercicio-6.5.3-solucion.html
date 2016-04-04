@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <!--
+          5.5.2: Establece la anchura total del contenedor principal para que iguale
+                 a la del elemento de video
+          5.5.3: Emplaza a la derecha el elemento vduration y define estilos de
+                 presentacion. Crea un Block Formating Context con overflow:auto
+      -->
+      <style>
+        #vcontrolcontainer {
+          width: 800px;
+        }
+        #vduration {
+          float:right;
+          background-color: #bbb;
+          border: 0;
+          border-radius: 5px;
+          padding: 2px;
+        }
+        #vcontrol {
+          width:auto;
+          overflow:auto;
+        }
+      </style>
+      <script>
+        function initMyVideo() {
+          myProgressBar.max=myVideo.duration;
+          vduration.innerHTML=myVideo.duration;
+        }
+
+        function setProgress() {
+          myProgressBar.value=myVideo.currentTime;
+        }
+
+        function seek (ev) {
+          nextLength=ev.offsetX;
+          totalLength=myProgressBar.clientWidth;
+          myVideo.currentTime=myVideo.duration * nextLength / totalLength;
+        }
+
+        function togglePlayStatus() {
+          if (myVideo.paused) {
+            myVideo.play();
+          } else {
+            myVideo.pause();
+          }
+          togglePlayIcon();
+        }
+        function togglePlayIcon() {
+          if (myVideo.paused) {
+            playbut.innerHTML="<img src='sesion-4-ejercicio-6-play.png' width='20'>"
+          } else {
+            playbut.innerHTML="<img src='sesion-4-ejercicio-6-pause.png' width='20'>"
+          }
+        }
+      </script>
+    </head>
+    <body>
+        <video id="myVideo" style="width:800px"
+              onplay="togglePlayIcon()" onpause="togglePlayIcon()"
+              onloadedmetadata="initMyVideo()"
+              ontimeupdate="setProgress()">
+          <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
+        </video>
+        <!-- 5.5.1: Crea una estructura de contenedores en cascada sobre la que aplicar los estilos -->
+        <div id="vcontrolcontainer">
+          <div id="vduration">00:00</div>
+          <div id="vcontrol">
+            <div id="playbut" onclick="togglePlayStatus()">
+              <img src="sesion-4-ejercicio-6-play.png" width="20">
+            </div>
+            <div id="vpbar">
+              <progress id="myProgressBar" value="0" max="100" onclick="seek(event)">
+            </div>
+          </div>
+        </div>
+    </body>
+</html>

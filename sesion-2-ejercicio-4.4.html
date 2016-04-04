@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var rateInterval = null;
+        var currentRate = 1;
+        var rateStep = 30;
+
+        function fw () {
+            clearRate();
+            currentRate++;
+            setRate();
+        }
+
+        function rw () {
+            clearRate();
+            currentRate--;
+            setRate();
+        }
+
+        function clearRate () {
+            if( rateInterval != null) {
+                window.clearInterval(rateInterval);
+                rateInterval = null;
+            }
+        }
+
+        function setRate() {
+            if (currentRate >= 0 ) {
+                _video.playbackRate = currentRate;
+                _video.play();
+            } else {
+              rateInterval = setInterval (function() {seekRate()},rateStep);
+            }
+        }
+
+        function seekRate() {
+            var currentTime = _video.currentTime;
+            _video.currentTime = currentTime + rateStep * currentRate / 1000;
+        }
+
+        function showData() {
+          console.log("VIDEO TRACKS: " + _video.videoTracks)
+          console.log("AUDIO TRACKS: " + _video.audioTracks)
+        }
+    </script>
+</head>
+<body>
+    <video id="_video" style="border:solid" autoplay onloadeddata="showData()">
+        <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
+    </video>
+    <p>
+    <button onclick="rw()">RW</button>
+    <button onclick="fw()">FW</button>
+
+    <!--
+    EJERCICIO 1: Implementar un mecanismo de FF y RW del contenido reproducido
+    por myVideo y asociarlo al pulsado del rat�n. Cada vez que se pulsa FW se
+    incrementa el playrate en 1. Cada vez que se pulsa RW se decrementa el
+    playrate en 1. Usar el API JS del elemento de video
+
+    EJERICIO 2: Implementar las operaciones FF y RW usando un SEEK temporizado
+
+    -->
+</body>
+</html>

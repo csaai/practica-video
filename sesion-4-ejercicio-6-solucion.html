@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+          #vcontrolcontainer {
+            width: 800px;
+          }
+          #vduration {
+            float:right;
+            margin-left: 5px;
+            background-color: #bbb;
+            border: 0;
+            border-radius: 5px;
+            padding: 2px;
+          }
+          #playbut {
+            float:left;
+            margin-right: 5px;
+          }
+          #vcontrol {
+            width:auto;overflow:auto;
+            position:relative;
+          }
+          #vpbar {
+            width:auto;
+            overflow:auto;
+            position: relative;
+            top: 50%;
+          }
+          progress {
+            border: 0;
+            height: 5px;
+            border-radius: 2px;
+            width: 100%;
+            display: table-cell;
+            vertical-align: middle;
+
+          }
+          progress::-webkit-progress-bar-value {background:#337fb4}
+          progress::-webkit-progress-value {background:#337fb4}
+          progress::-moz-progress-bar {background:#337fb4}
+          progress:hover {
+            height: 15px;
+            border-radius: 5px;
+          }
+        </style>
+        <script>
+          function initMyVideo() {
+            myProgressBar.max=myVideo.duration;
+            vduration.innerHTML=myVideo.duration;
+          }
+          function setProgress() {
+            myProgressBar.value=myVideo.currentTime;
+          }
+          function togglePlayStatus() {
+            if (myVideo.paused) {
+              myVideo.play();
+            } else {
+              myVideo.pause();
+            }
+            togglePlayIcon();
+          }
+          function togglePlayIcon() {
+            if (myVideo.paused) {
+              playbut.innerHTML="<img src='sesion-4-ejercicio-6-play.png' width='20'>"
+            } else {
+              playbut.innerHTML="<img src='sesion-4-ejercicio-6-pause.png' width='20'>"
+            }
+          }
+          function seek (ev) {
+            nextLength=ev.offsetX;
+            totalLength=myProgressBar.clientWidth;
+            myVideo.currentTime=myVideo.duration * nextLength / totalLength;
+          }
+        </script>
+    </head>
+    <body>
+        <video id="myVideo" style="width:800px" onplay="togglePlayIcon()"
+              onpause="togglePlayIcon()" onloadedmetadata="initMyVideo()"
+              ontimeupdate="setProgress()">
+          <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
+        </video>
+        <div id="vcontrolcontainer">
+          <div id="vduration">00:00</div>
+          <div id="vcontrol">
+            <div id="playbut" onclick="togglePlayStatus()">
+              <img src="sesion-4-ejercicio-6-play.png" width="20">
+            </div>
+            <div id="vpbar">
+              <progress id="myProgressBar" value="0" max="100" onclick="seek(event)">
+            </div>
+          </div>
+        </div>
+
+
+        <!--
+        -->
+    </body>
+</html>

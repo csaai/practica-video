@@ -1,72 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-        function playMyVideo() {
-            dur.innerHTML=myVideo.duration
-            if (myVideo.paused) {
-                myVideo.play();
-                playbot.textContent="pause";
-            } else {
-                myVideo.pause();
-                playbot.textContent="play";
-            }        }
-        function pauseMyVideo() {
-            myVideo.pause();
-        }
-        function muteMyVideo() {
-            if (myVideo.muted == true) {
-                myVideo.muted = false;
-                mutebot.textContent="mute";
-            } else {
-                myVideo.muted=true;
-                mutebot.textContent="unmute";
-            }
-        }
-        function volumeUp() {
-            myVideo.volume += 0.1;
-            vd.innerHTML=myVideo.volume;
-        }
-        function volumeDown() {
-            myVideo.volume -= 0.1;
-            vd.innerHTML=myVideo.volume;
-        }
-    </script>
 </head>
 <body>
-    <video id="myVideo" style="border:solid" autoplay>
+    <video id="myVideo" ontimeupdate="cambiarposicion()" style="border:solid" autoplay>
         <source src="http://media.w3.org/2010/05/sintel/trailer.webm"/>
     </video>
     <p>
-    <button id="playbot" onclick="playMyVideo()" >play</button>
-    <button id="mutebot" onclick="pauseMyVideo()">pause</button>
-    <button onclick="muteMyVideo()">mute</button>
-    <button onclick="volumeUp()">+</button>
+    <button id="playbot">play</button>
+    <button id="mutebot">pause</button>
+    <button>mute</button>
+    <button>+</button>
     <span id="vd">0</span>
-    <button onclick="volumeDown()">-</button>
+    <button>-</button>
     <span id="dur">0</span>
+    <p>POSICION: <span id="posicion">0</span></p>
+    <input id="newtime" type="text"></input>
+    <button id="seek" onclick="salta()">seek</button>
 
-    
+
     <!--
         EJERCICIO 1: Conectar los botones anteriores al API JS del elemento "myVideo"
             * play: Reproducir el contenido de "myVideo"
-            * pausar: Pausar la reproducci—n de contenido
+            * pausar: Pausar la reproducciï¿½n de contenido
             * mute: Cambiar el estado del altavoz: activado/desactivado
             * + : Incrementar el volumen en 0.1
             * - : Decrementar el volumen en 0.1
-            
-        EJERCICIO 2: Realizar el control de las funciones play/pause y mute/unmute con un œnico
-        bot—n. la etiqueta mostrada en cada momento debe indicar la acci—n que se ejecutar‡ al
+
+        EJERCICIO 2: Realizar el control de las funciones play/pause y mute/unmute con un ï¿½nico
+        botï¿½n. la etiqueta mostrada en cada momento debe indicar la acciï¿½n que se ejecutarï¿½ al
         pulsar
-        
-        EJERCICIO 3: Mostrar el valor numŽrico del volumen actual en el elemento span
-        
-        EJERCICIO 4: Mostrar la duraci—n total del contenido
-        
-        EJERCICIO 5: Mostrar la posici—n actual de reproducci—n
-        
-        EJERCICIO 6: A–adir un formulario que acepte un campo numerico como nueva posici—n de reproducci—n
-        
+
+        EJERCICIO 3: Mostrar el valor numï¿½rico del volumen actual en el elemento span
+
+        EJERCICIO 4: Mostrar la duraciï¿½n total del contenido
+
+        EJERCICIO 5: Mostrar la posiciï¿½n actual de reproducciï¿½n
+
+        EJERCICIO 6: Aï¿½adir un formulario que acepte un campo numerico como nueva posiciï¿½n de reproducciï¿½n
+
     -->
 </body>
 </html>

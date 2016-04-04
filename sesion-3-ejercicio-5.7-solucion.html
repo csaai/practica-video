@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+       <script>
+          function showVideo() {
+            console.log("TRACKS:" + myVideo.textTracks.length )
+            for (i=0; i< myVideo.textTracks.length; i++) {
+              track = myVideo.textTracks[i];
+              trackinfo = document.createElement("p");
+              trackinfo.innerHTML="label=" + track.label + ", kind=" + track.kind + ", lang=" + track.language;
+              _control.appendChild(trackinfo);
+            }
+          }
+          function selectTrack(trackId) {
+            for (i=0; i< myVideo.textTracks.length; i++) {
+              myVideo.textTracks[i].mode = 'hidden';
+            }
+            myVideo.textTracks[trackId].mode = 'showing';
+          }
+       </script>
+    </head>
+    <body>
+        <video id="myVideo" controls style="width:800px" autoplay onloadedmetadata="showVideo()">
+            <source src="videos/sintel_trailer-720p.webm"/>
+            <track src="sesion-3-ejercicio-5.5.vtt" label="Español" srclang="es"/>
+            <track default src="sesion-3-ejercicio-5.6-en.vtt" label="English" srclang="en"/>
+            <track src="sesion-3-ejercicio-5.6-caption.vtt" label="Captions" srclang="es"/>
+        </video>
+        <div id="_control">
+          <button onclick="selectTrack(0)">track 0</button>
+          <button onclick="selectTrack(1)">track 1</button>
+          <button onclick="selectTrack(2)">track 2</button>
+        </div>
+    </body>
+</html>

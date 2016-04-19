@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+        var urlList = [
+          "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4",
+          "http://media.w3.org/2010/05/sintel/trailer.webm",
+          "http://simpl.info/video/video/chrome.webm"
+        ];
+        var posterList = [
+          "http://media.xiph.org/BBB/BBB-360-png/big_buck_bunny_00703.png",
+          "http://media.w3.org/2010/05/sintel/poster.png",
+          "http://simpl.info/video/images/poster.jpg"
+        ];
+        var videoData = [0,0,0];
+        var currentIx;
+
+        function print_images() {
+          for (i in posterList) {
+            div = document.createElement("div");
+            image_list.appendChild(div);
+            img = document.createElement("img");
+            img.src=posterList[i];
+            img.width="200";
+            img.videoIx=i;
+            img.onclick=function(){
+              play(this.videoIx)
+            };
+            div.appendChild(img);
+          }
+        }
+
+        function play(i) {
+          if (currentIx != null) {
+            videoData[currentIx]=player.getElementsByTagName("video")[0].currentTime;
+          }
+          player.innerHTML="";
+          videoContainer = document.createElement("div");
+          videoContainer.style.width="100%";
+          player.appendChild(videoContainer);
+          videoTag = document.createElement("video");
+          videoContainer.appendChild(videoTag);
+          videoTag.src = urlList[i];
+          videoTag.style.width="100%";
+          currentIx=i;
+          videoTag.onloadedmetadata = function() {
+            videoTag.currentTime=videoData[currentIx];
+          };
+          videoTag.play();
+        }
+      </script>
+      <style>
+        #container  {
+          position: relative;
+        }
+        #image_list {
+          position: relative;
+          float: right;
+        }
+        #player {
+          position: relative;
+          overflow:auto;
+          text-align: center
+        }
+      </style>
+  </head>
+  <body onload="print_images()">
+    <div id="container">
+      <div id="image_list">
+      </div>
+      <div id="player">
+        <p>PLAYER</p>
+      </div>
+    </div>
+  </body>
+</html>

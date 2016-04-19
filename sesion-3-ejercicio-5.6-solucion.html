@@ -5,7 +5,7 @@
        <script>
           function showVideo() {
             console.log("TRACKS:" + myVideo.textTracks.length )
-            for (i=0; i< myVideo.textTracks.length; i++) {
+            for (i=0; i < myVideo.textTracks.length; i++) {
               track = myVideo.textTracks[i];
               trackinfo = document.createElement("p");
               trackinfo.innerHTML="label=" + track.label + ", kind=" + track.kind + ", lang=" + track.language;
@@ -13,9 +13,9 @@
             }
           }
           function selectTrack(trackId) {
-            for (i=0; i< myVideo.textTracks.length; i++) {
-              myVideo.textTracks[i].mode = 'hidden';
-            }
+            //for (i=0; i< myVideo.textTracks.length; i++) {
+              //myVideo.textTracks[i].mode = 'hidden';
+            //}
             myVideo.textTracks[trackId].mode = 'showing';
           }
        </script>

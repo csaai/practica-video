@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+        var urlList = [
+          "http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4",
+          "http://media.w3.org/2010/05/sintel/trailer.webm",
+          "http://simpl.info/video/video/chrome.webm"
+        ];
+        var posterList = [
+          "http://media.xiph.org/BBB/BBB-360-png/big_buck_bunny_00703.png",
+          "http://media.w3.org/2010/05/sintel/poster.png",
+          "http://simpl.info/video/images/poster.jpg"
+        ];
+
+        function print_images() {
+          for (i in posterList) {
+            div = document.createElement("div");
+            image_list.appendChild(div);
+            img = document.createElement("img");
+            img.src=posterList[i];
+            img.width="200";
+            div.appendChild(img);
+          }
+        }
+      </script>
+  </head>
+  <body onload="print_images()">
+    <div id="image_list">
+    </div>
+  </body>
+</html>
